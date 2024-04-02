@@ -8,8 +8,8 @@ from github import Github
 # 14 for test 12 real get up
 GET_UP_ISSUE_NUMBER = 1   
 GET_UP_MESSAGE_TEMPLATE = (
-    "#早起 今天的起床时间是--{get_up_time}.\r\n\r\n 早上好，新的一天，边听播客边吃早餐。\r\n\r\n 今天的一句诗:\r\n {sentence}"
-)
+    "今天的起床时间是--{get_up_time}.\r\n\r\n 早上好，一日之计在于晨！你是最棒哒~\r\n\r\n 今天的一句诗:\r\n {sentence}"
+
 SENTENCE_API = "https://v1.jinrishici.com/all"
 DEFAULT_SENTENCE = "赏花归去马如飞\r\n去马如飞酒力微\r\n酒力微醒时已暮\r\n醒时已暮赏花归\r\n"
 TIMEZONE = "Asia/Shanghai"
@@ -64,7 +64,7 @@ def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
     early_message, is_get_up_early = make_get_up_message()
     body = early_message
     if weather_message:
-        weather_message = f"现在的天气是{weather_message}\n"
+        weather_message = f"#早起\r\n现在的天气是{weather_message}\n"
         body = weather_message + early_message
     if is_get_up_early:
         issue.create_comment(body)
